@@ -1,27 +1,28 @@
-=== Better WordPress Google XML Sitemaps (with sitemapindex and Multi-site support) ===
+=== Better WordPress Google XML Sitemaps (with sitemapindex, multi-site and Google News sitemap support) ===
 Contributors: OddOneOut
 Donate link: http://betterwp.net/wordpress-plugins/google-xml-sitemaps/#contributions
 Tags: xml sitemaps, xml sitemap, google xml sitemaps, sitemapindex, sitemap, sitemaps, seo, bing, google, msn, ask, multi-site, multisite
 Requires at least: 3.0
-Tested up to: 3.3
-Stable tag: 1.1.6
+Tested up to: 3.3.1
+Stable tag: 1.2.1
 
-The first WordPress XML Sitemap plugin that comes with comprehensive support for Sitemapindex and Multi-site.
+The first WordPress XML Sitemap plugin that comes with comprehensive support for Sitemapindex, Multi-site and Google News sitemap.
 
 == Description ==
 
-Welcome to the first WordPress sitemap plugin that has support for both sitemapindex and Multi-site websites! You will no longer have to worry about the 50,000 URL limit or the time it takes for a sitemap to be generated. This plugin is fast, consumes much fewer resources and can be extended via your very own modules (yes, no hooks needed!). Here's a [demo](http://betterwp.net/sitemapindex.xml) of the sitemapindex if you are interested.
+With BWP GXS you will no longer have to worry about the 50,000 URL limit or the time it takes for a sitemap to be generated. This plugin is fast, consumes much less resource and can be extended via your very own modules (yes, no hooks needed!). Here's a [demo](http://betterwp.net/sitemapindex.xml) of the sitemapindex if you are interested.
 
-**New in 1.1.0!**
+**===New in 1.2.0!===**
 
-* This plugin can now automatically split large post sitemaps into smaller ones. You can set a limit for each small sitemap. For example if you have 200K posts and would like to have 10K posts for each sitemap, BWP GXS will then split `post.xml` into 20 parts (i.e. from `post_part1.xml` to `post_part20.xml`). This helps you bypass the 50,000 URLs limit without having to build your custom modules, and also helps make your sitemaps smaller, lighter, and of course faster to generate. This plugin has been tested on sites that have nearly 200K posts and it took less than 1 second to generate the sitemapindex.
-* Added a new sitemap, called External Pages' sitemap, using which you can easily add links to pages that do not belong to WordPress to the Sitemap Index. Please refer to the [customization section](http://betterwp.net/wordpress-plugins/google-xml-sitemaps/#external_sitemap) for more details.
-* Added options in the Generator to exclude certain post types, taxonomies without having to use filters.
-* Added new hooks to default post-based and taxonomy-based modules to allow easier SQL query customization (you don't have to develop custom modules anymore just to change minor things). Read [here](http://betterwp.net/wordpress-plugins/google-xml-sitemaps/#exclude_items) for more details.
+The long-awaited BWP GXS 1.2.0 has finally been released with a new and very powerful feature: **Google News Sitemap creation**! All you have to do is click on the newly added tab (**News sitemap**), enable the module, choose some news categories as well as their genres and you're ready to go. Your news sitemap can also be used to ping Search Engines individually if you want. And of course, whenever you publish a new post in a news category, all selected Search Engines will be pinged!
 
 **Sitemapindex Support**
 
 What's so great about a sitemapindex you might say? Sitemapindex, as its name suggests, is one kind of sitemaps that allows  you to group multiple sitemaps files inside it. Sitemapindex, therefore, gives you many benefits, such as: possibility to bypass the 50,000 URL limit (you can have 10 custom sitemaps, each has 10000 URLs), or possibility to make the generation time much faster (because each sitemap is requested separately and is built by its own module), etc.
+
+**Splitting post-based sitemaps (since 1.1.0)**
+
+As of version 1.1.0, this plugin can automatically split large post sitemaps into smaller ones. You can set a limit for each small sitemap. For example if you have 200K posts and would like to have 10K posts for each sitemap, BWP GXS will then split `post.xml` into 20 parts (i.e. from `post_part1.xml` to `post_part20.xml`). This helps you bypass the 50,000 URLs limit without having to build your custom modules, and also helps make your sitemaps smaller, lighter, and of course faster to generate. This plugin has been tested on sites that have nearly 200K posts and it took less than 1 second to generate the sitemapindex.
 
 **Multi-site Support**
 
@@ -50,6 +51,8 @@ If you have any problem using this plugin, refer to the [FAQ section](http://bet
 
 * English (default)
 * Malaysian (ms_MY) - Thanks to [d4rkcry3r](http://d4rkcry3r.com)!
+* Traditional Chinese (zh_TW) - Thanks to Richer Yang!
+* Romanian (ro_RO) - Thanks to Luke Tyler!
 
 Please [help translate](http://betterwp.net/wordpress-tips/create-pot-file-using-poedit/) this plugin!
 
@@ -155,11 +158,41 @@ That's the default behaviour of this plugin and I plan to improve it in future v
 2. A Custom Post Type Sitemap
 3. An External Pages' Sitemap
 4. The Configuration Page
+5. Google News Sitemap
 
 == Changelog ==
 
+= 1.2.1 =
+As you might have guessed, this release focuses on improving the new Google News Sitemap Module which was introduced in 1.2.0. Below are some enhancements:
+
+* Added new languages (Spanish, German, Polish, Portuguese, etc.).
+* Added a new hook (`bwp_gxs_news_name`) that allows you to set a custom sitename without having to change the sitename setting inside WordPress.
+* Added a new option that allows you to choose whether to use news categories or news tags as keywords (very experimental and can be inefficient if you have a lot of posts).
+* WordPress's timezone settings are now properly respected.
+* Genres tags are omitted entirely if no genres are set for a particular categories.
+* A new Multi-category mode (disabled by default) has been added that offers the following features:
+	* If a post is in both an included and an excluded category, it's now excluded.
+	* If a post is in two or more categories, it can now have all genres that are assigned to those categories.
+	* If a post is in two or more categories, it can now have all categories as its keywords (only if you choose to use news categories as keywords of course)
+
+Other functionality of BWP GXS remains the same, so test the News sitemap as much as you can and report any bug you may stumble upon. Enjoy :).
+
+= 1.2.0 =
+* Added a Google News sitemap module. Creating a news sitemap has never been so easy! More information can be found [here](http://betterwp.net/314-bwp-gxs-1-2-0-with-news-sitemap/).
+* WPMU Domain Mapping is now supported better (robots.txt, site.xml, sitemap urls in Statistics tab).
+* BWP GXS's menu can now be put under **Settings** using a simple filter.
+* BWP GXS's admin style is now enqueued correctly so no more warning from WordPress.
+* Added a Traditional Chinese and a Romanian transation, thanks to Richer Yang and Luke Tyler!
+* All invalid URls, such as `#` and external or empty ones, are now removed from sitemaps.
+* Removed Yahoo's pinging service.
+* Fixed a bug that causes duplicate author entries to appear in author sitemap.
+* Fixed a bug that causes a "class not found" error with paginated custom post type sitemap modules.
+* Other fixes and improvements.
+
+**Report bugs, request features here: http://betterwp.net/community/forum/2/bwp-google-xml-sitemaps/**
+
 = 1.1.6 =
-* Temporary fix for 1.1.5's broken custom post type URL issue. Expect a 1.1.7 real soon.
+* Temporary fix for 1.1.5's broken custom post type URL issue.
 
 = 1.1.5 =
 * Added a new 'site.xml' sitemap that lists all blogs within your site / network. 
