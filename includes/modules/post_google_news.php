@@ -64,7 +64,8 @@ class BWP_GXS_MODULE_POST_GOOGLE_NEWS extends BWP_GXS_MODULE {
 
 	private static function news_time()
 	{
-		return gmdate('Y-m-d H:i:s', time() + get_option('gmt_offset') * 3600 - 48 * 3600);
+		$hours = apply_filters( 'bwp_google_site_maps_news_hours', 48 );
+		return gmdate('Y-m-d H:i:s', time() + get_option('gmt_offset') * 3600 - $hours * 3600);
 	}
 
 	/**
