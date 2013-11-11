@@ -179,7 +179,9 @@ class BWP_SIMPLE_GXS extends BWP_FRAMEWORK {
 		
 		$this->cache_time = (int) $this->options['input_cache_age'] * (int) $this->options['select_time_type'];
 		$this->oldest_time = (int) $this->options['input_oldest'] * (int) $this->options['select_oldest_type'];
-		$this->options['input_cache_dir'] = plugin_dir_path($this->plugin_file) . 'cache/';
+		if (empty($this->options['input_cache_dir']) || !file_exists($this->options['input_cache_dir'])) {
+			$this->options['input_cache_dir'] = plugin_dir_path($this->plugin_file) . 'cache/';
+		}
 		$this->options['input_cache_dir'] = $this->uni_path_sep($this->options['input_cache_dir']);
 
 		$module_map = apply_filters('bwp_gxs_module_mapping', array());
@@ -545,7 +547,7 @@ if (!empty($page))
 				'input_item_limit' => array('size' => 5, 'label' => __('item(s) in one sitemap. You can not go over 50,000.', 'bwp-simple-gxs')),
 				'input_split_limit_post' => array('size' => 5, 'label' => __('item(s). Again , you can not go over 50,000.', 'bwp-simple-gxs')),
 				'input_alt_module_dir' => array('size' => 91, 'label' => __('Input a full path to the directory where you put your own modules (e.g. <code>/home/mysite/public_html/gxs-modules/</code>), you can also override a built-in module by having a module with the same filename in this directory. A filter is also available if you would like to use PHP instead.', 'bwp-simple-gxs')),
-				'input_cache_dir' => array('size' => 91, 'disabled' => ' disabled="disabled"', 'label' => __('The cache directory must be writable (i.e. CHMOD to 755 or 777).', 'bwp-simple-gxs')),
+				'input_cache_dir' => array('size' => 91, 'label' => __('The cache directory must be writable (i.e. CHMOD to 755 or 777).', 'bwp-simple-gxs')),
 				'input_sql_limit' => array('size' => 5, 'label' => __('item(s) in one SQL query. This helps you avoid running too heavy queries.', 'bwp-simple-gxs')),
 				'input_oldest' => array('size' => 3, 'label' => '&mdash;'),
 				'input_cache_age' => array('size' => 5, 'label' => '&mdash;'),
@@ -620,7 +622,7 @@ if (!empty($page))
 		}
 
 		$option_formats = array('input_item_limit' => 'int', 'input_split_limit_post' => 'int', 'input_sql_limit' => 'int', 'input_cache_age' => 'int', 'select_time_type' => 'int');
-		$option_ignore = array('input_cache_dir', 'input_exclude_post_type', 'input_exclude_taxonomy');
+		$option_ignore = array('input_exclude_post_type', 'input_exclude_taxonomy');
 		// [WPMS Compatible]
 		$option_super_admin = $this->site_options;
 	}
@@ -1859,4 +1861,3 @@ if (!empty($page))
 		return true;
 	}
 }
-?>
