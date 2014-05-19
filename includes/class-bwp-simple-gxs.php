@@ -647,10 +647,13 @@ class BWP_SIMPLE_GXS extends BWP_FRAMEWORK_IMPROVED
 
 			$blog_home = @parse_url(home_url());
 			$blog_host = strtolower($blog_home['host']);
-
+			
+			// CF Modified to allow the plugin to live in a plugins dir outside the webroot.
+			$basename = basename(dirname($this->plugin_file));
 			$this->xslt = !empty($this->options['input_custom_xslt'])
 				? $this->options['input_custom_xslt']
-				: plugin_dir_url($this->plugin_file) . 'xsl/bwp-sitemap.xsl';
+				: plugins_url($basename . '/xsl/bwp-sitemap.xsl';
+			// End CF modification
 
 			$this->xslt = strcmp($user_host, $blog_host) == 0
 				? $this->xslt
