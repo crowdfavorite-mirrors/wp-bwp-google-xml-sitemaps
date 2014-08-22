@@ -3,8 +3,8 @@ Contributors: OddOneOut
 Donate link: http://betterwp.net/wordpress-plugins/google-xml-sitemaps/#contributions
 Tags: xml sitemaps, xml sitemap, google xml sitemaps, sitemapindex, sitemap, sitemaps, seo, bing, google, msn, ask, multi-site, multisite
 Requires at least: 3.0
-Tested up to: 3.7
-Stable tag: 1.2.2
+Tested up to: 3.9.1
+Stable tag: 1.2.3
 
 The first WordPress XML Sitemap plugin that comes with comprehensive support for Sitemapindex, Multi-site and Google News sitemap.
 
@@ -162,11 +162,14 @@ That's the default behaviour of this plugin and I plan to improve it in future v
 
 == Changelog ==
 
+= 1.2.3 =
+* Temporary fix for unexpected character that appears on every page.
+
 = 1.2.2 =
 
 * Marked as WordPress 3.7 compatible.
 * Added two new Google News Sitemap languages: Turkish (tr) and Russian (ru).
-* Updated BWP Framework to fix a possible bug that causes BWP setting pages to go blank.
+* Updated BWP Framework to fix a possible bug that caues BWP setting pages to go blank.
 * Removed Ask.com's pinging service as it has been retired.
 * **Good news**: ManageWP.com has become the official sponsor for BWP Google Xml Sitemaps - [Read more](http://betterwp.net/319-better-wordpress-plugins-updates-2013/).
 
