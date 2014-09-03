@@ -5,10 +5,18 @@
 	font-size: 0.95em;
 	background-color: #ffffff;
 	padding: 5px 10px; padding-top: 0px;
-	width: 90%;
+	width: 72%;
 	border: 1px solid #cccccc;
-	max-height: 200px;
 	overflow: auto;
+}
+
+.bwp-gxs-log-big {
+	max-height: 600px;
+	min-height: 500px;
+}
+
+.bwp-gxs-log-small {
+	max-height: 200px;
 }
 
 .bwp-table {
