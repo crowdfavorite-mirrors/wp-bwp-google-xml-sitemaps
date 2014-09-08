@@ -652,7 +652,7 @@ class BWP_SIMPLE_GXS extends BWP_FRAMEWORK_IMPROVED
 			$basename = basename(dirname($this->plugin_file));
 			$this->xslt = !empty($this->options['input_custom_xslt'])
 				? $this->options['input_custom_xslt']
-				: plugins_url($basename . '/xsl/bwp-sitemap.xsl';
+				: plugins_url($basename . '/xsl/bwp-sitemap.xsl');
 			// End CF modification
 
 			$this->xslt = strcmp($user_host, $blog_host) == 0
